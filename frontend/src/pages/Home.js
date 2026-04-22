@@ -8,7 +8,7 @@ export default function Home() {
   const { user, isSubscribed } = useAuth();
   const [charities, setCharities] = useState([]);
   useEffect(() => {
-    api.getCharities({ featured: 'true' }).then(r => setCharities(r.data.charities)).catch(() => {});
+    api.getCharities({ featured: 'true' }).then(r => setCharities(r.data?.charities ?? [])).catch(() => {});
   }, [user]);
 
   return (
@@ -116,7 +116,7 @@ export default function Home() {
                   {c.image && <div className="charity-img" style={{ backgroundImage: `url(${c.image})` }} />}
                   <div className="charity-info">
                     <h4>{c.name}</h4>
-                    <p>{c.description.slice(0, 90)}…</p>
+                    <p>{c.description?.slice(0, 90)}…</p>
                   </div>
                 </Link>
               ))}

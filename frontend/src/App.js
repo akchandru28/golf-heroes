@@ -6,7 +6,7 @@ import './styles/global.css';
 
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
-import { ProtectedRoute, AdminRoute, SubscriberRoute } from './components/shared/ProtectedRoute';
+import { ProtectedRoute, AdminRoute } from './components/shared/ProtectedRoute';
 import Navbar from './components/shared/Navbar';
 
 import Home from './pages/Home';

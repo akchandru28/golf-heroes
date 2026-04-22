@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckIcon, StarIcon } from './Icons';
+import { CheckIcon } from './Icons';
 
 const plans = [
   {

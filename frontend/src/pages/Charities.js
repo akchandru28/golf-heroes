@@ -10,7 +10,7 @@ export default function Charities() {
 
   useEffect(() => {
     api.getCharities()
-      .then(r => setCharities(r.data.charities))
+      .then(r => setCharities(r.data?.charities ?? []))
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);

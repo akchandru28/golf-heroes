@@ -40,17 +40,17 @@ export default function Dashboard() {
           api.getMyScores(),
           api.getCharities(),
         ]);
-        setScores(sc.data.entries);
-        setCharities(ch.data.charities);
+        setScores(sc.data?.entries ?? []);
+        setCharities(ch.data?.charities ?? []);
         if (isSubscribed()) {
           const [dr, mr, ad] = await Promise.all([
             api.getUpcomingDraw(), 
             api.getMyResults(),
             api.getDraws()
           ]);
-          setDraw(dr.data.draw);
-          setMyResults(mr.data.draws);
-          setAllDraws(ad.data.draws);
+          setDraw(dr.data?.draw ?? null);
+          setMyResults(mr.data?.draws ?? []);
+          setAllDraws(ad.data?.draws ?? []);
         }
       } catch (err) {
         toast.error('Failed to load dashboard data');
@@ -517,7 +517,7 @@ function CharitySelector({ charities, selectedCharity, charityPercentage, onUpda
             {c.image && <img src={c.image} alt={c.name} className="charity-option-img" />}
             <div className="charity-option-info">
               <strong>{c.name}</strong>
-              <span style={{ fontSize: '0.85rem', opacity: 0.8 }}>{c.description.slice(0, 80)}…</span>
+              <span style={{ fontSize: '0.85rem', opacity: 0.8 }}>{c.description?.slice(0, 80)}…</span>
             </div>
             <div className={`radio-dot ${chosenId === c._id ? 'checked' : ''}`} />
           </div>
